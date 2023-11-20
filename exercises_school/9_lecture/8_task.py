@@ -30,27 +30,24 @@ Pak zjistí, zda-li je zvoleno jídlo A nebo B
 Podle toho vypíše jídlo A nebo B. (Ta jídla si tam musíte přidat, třeba B může být řízek s kaší.
 """
 
-def vydej_obedu():
-    napoj = ["vitamínový nápoj"]
-    jidloA = ["polévka česneková s bramborem", "segedínský guláš, houskové knedlíky", "jablko"]
-    jidloB = ["polévka česneková s bramborem", "kaše s bramborem", "hruška"]
-
-    yield napoj
-
+def catch_your_lunch():
+    napoj = yield
+    yield f"Dostanete: {napoj}"
 
     volba = yield
+    yield f"Vybráno jídlo: {volba}"
 
     if volba == "A":
-        yield jidloA
+        jidlo = ["polévka česneková s bramborem", "segedínský guláš, houskové knedlíky", "jablko"]
     else:
-        yield jidloB
+        jidlo = ["polévka česneková s bramborem", "kaše s bramborem", "hruška"]
 
-corutina1 = vydej_obedu()   #nastartuje corutinu
-print(next(corutina1))      #spusti prvni cast
-next(corutina1)             #spusti druhou cast, ktera ocekava data
-print(corutina1.send("A"))  #posle data a nacte si vysledek
-corutina1.close()           #ukonci corutinu
+    yield f"Jídlo: {jidlo}"
 
+    yield "Konec"
 
-
-VIS COS TIM???
+corutina1 = catch_your_lunch()   # nastartuje corutinu
+print(next(corutina1))            # spusti prvni cast, dostanete nápoj
+print(corutina1.send("vitamínový nápoj"))  # posle data (nápoj) a provede druhou část
+print(corutina1.send("A"))        # posle data (volbu) a provede třetí část
+print(next(corutina1))            # provede poslední část (vypíše jídlo)
