@@ -29,6 +29,7 @@ Nejprve vrátí nápoj
 Pak zjistí, zda-li je zvoleno jídlo A nebo B
 Podle toho vypíše jídlo A nebo B. (Ta jídla si tam musíte přidat, třeba B může být řízek s kaší.
 """
+
 def vydej_obedu():
     napoj = ["vitamínový nápoj"]
     jidloA = ["polévka česneková s bramborem", "segedínský guláš, houskové knedlíky", "jablko"]
@@ -39,7 +40,7 @@ def vydej_obedu():
 
     volba = yield
 
-    if(volba =="A"):
+    if volba == "A":
         yield jidloA
     else:
         yield jidloB
@@ -49,3 +50,7 @@ print(next(corutina1))      #spusti prvni cast
 next(corutina1)             #spusti druhou cast, ktera ocekava data
 print(corutina1.send("A"))  #posle data a nacte si vysledek
 corutina1.close()           #ukonci corutinu
+
+
+
+VIS COS TIM???

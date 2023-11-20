@@ -4,7 +4,7 @@ Aby vypisoval stejné hodnoty i v případě, že vlastnost se jménem jezera bu
 """
 
 
-class KarsLakesGenerator():
+class KarsLakesGenerator:
     i = 0
     j = 0
 
