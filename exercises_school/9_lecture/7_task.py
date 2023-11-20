@@ -35,12 +35,15 @@ def catch_lunch():
          "jablko",
     ]
     yield [menu[0]]
-    yield [menu[1], menu[1], menu[3]]
+    yield [menu[1], menu[2], menu[3]]
 
 
-corutina1 = catch_lunch()
+try:
+    corutina1 = catch_lunch()
 
-napoje = next(corutina1)
-print(napoje)
-jidla = next(corutina1)
-print(jidla)
+    napoje = next(corutina1)
+    print(napoje)
+    jidla = next(corutina1)
+    print(jidla)
+except Exception as e:
+    print(e)
