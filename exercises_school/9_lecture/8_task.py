@@ -36,13 +36,13 @@ def vydej_obedu():
 
     yield napoj
 
+
     volba = yield
 
     if(volba =="A"):
         yield jidloA
     else:
         yield jidloB
-
 
 corutina1 = vydej_obedu()   #nastartuje corutinu
 print(next(corutina1))      #spusti prvni cast
