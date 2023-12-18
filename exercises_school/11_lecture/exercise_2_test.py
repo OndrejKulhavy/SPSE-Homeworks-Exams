@@ -21,3 +21,19 @@ class TestAdd(unittest.TestCase):
     def test_add_str(self):
         self.assertRaises(TypeError, add, "1", "2")
 
+    def test_add_list(self):
+        self.assertRaises(TypeError, add, [1], [2])
+
+    def test_add_tuple(self):
+        self.assertRaises(TypeError, add, (1,), (2,))
+
+    def test_add_set(self):
+        self.assertRaises(TypeError, add, {1}, {2})
+
+    def test_add_dict(self):
+        self.assertRaises(TypeError, add, {"1": 1}, {"2": 2})
+
+    def test_add_class(self):
+        self.assertRaises(TypeError, add, object, object)
+
+
